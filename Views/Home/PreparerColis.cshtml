@@ -1,0 +1,33 @@
+@model Models.Commande.Commande
+
+<h2>Préparer le Colis</h2>
+
+<p>Commande ID : @Model.Id</p>
+<p>Client : @Model.Client?.Nom @Model.Client?.Prenom</p>
+<p>Statut actuel : @Model.Status</p>
+
+<h3>Produits</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Produit</th>
+            <th>Quantité</th>
+            <th>Quantité en Stock</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var produit in Model.CommandeProduits)
+        {
+            <tr>
+                <td>@produit.Produit.Libelle</td>
+                <td>@produit.Quantite</td>
+                <td>@produit.Produit.QuantiteEnStock</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<form asp-action="PrepareColis" method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <button type="submit">Confirmer </button>
+</form>

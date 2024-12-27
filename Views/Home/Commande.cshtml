@@ -1,0 +1,42 @@
+@model IEnumerable<Models.Commande.Commande>
+
+@{
+    ViewData["Title"] = "Commandes du Client";
+}
+
+<div class="text-center">
+<h2>Commandes du Client</h2>
+
+<div
+    class="table-responsive-md"
+>
+    <table
+        class="table table-primary"
+    >
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Date</th>
+                <th scope="col">Montant</th>
+                <th scope="col">Statut</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+
+
+    <tbody>
+        @foreach (var commande in Model)
+        {
+            <tr>
+                <td>@commande.Id</td>
+                <td>@commande.DateCommande.ToString("d")</td>
+                <td>@commande.Montant</td>
+                <td>@commande.Livraison.Status</td>
+                <td>
+                    <a href="@Url.Action("SuiviCommande", "Client", new { id = commande.Id })" class="btn btn-info">Suivi</a>
+                    <a href="@Url.Action("DeclarerCommandeReçue", "Client", new { id = commande.Id })" class="btn btn-s">reçu</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

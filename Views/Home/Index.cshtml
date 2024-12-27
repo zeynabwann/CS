@@ -1,0 +1,45 @@
+﻿   @{ Layout = "_Layout"; } 
+   @model IEnumerable<Models.Client.Client>
+
+<div class="text-center">
+<h2>Liste des Clients</h2>
+
+
+<div
+    class="table-responsive-md"
+>
+    <table
+        class="table table-primary"
+    >
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prenom</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Telephone</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        @foreach (var client in Model)
+        {
+            <tr>
+                <td>@client.Nom </td>
+                <td>@client.Prenom</td>
+                <td>@client.Telephone</td>
+                <td>@client.Adresse</td>
+                <td>
+                    <a href="@Url.Action("Client", "Client", new { id = client.Id })" class="btn btn-info">renseignement</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+        
+    </table>
+</div>
+
+
+    
+

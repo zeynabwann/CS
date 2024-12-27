@@ -1,0 +1,21 @@
+@model Models.Commande.Commande
+
+@{
+    ViewData["Title"] = "Suivi de Commande";
+}
+
+<h2>Suivi de la Commande</h2>
+
+<p>
+    ID : @Model.Id <br>
+    Date : @Model.DateCommande.ToString("d") <br>
+    Montant : @Model.Montant <br>
+    Statut : @Model.Livraison.Status <br>
+</p>
+
+<p>
+    Livraison : @Model.Livraison.Adresse <br>
+    Paiement : @Model.Paiement.TypePaiement - @Model.Paiement.Montant <br>
+</p>
+
+<a href="@Url.Action("DeclarerCommandeReçue", "Client", new { id = Model.Id })" class="btn btn-success"> reçu</a>

@@ -1,0 +1,23 @@
+@model Models.Produit.Produit
+
+<h2>Ajouter un Produit</h2>
+
+<form asp-action="EnregistrerProduit" method="post">
+    <div>
+        <label for="Libelle">Libellé</label>
+        <input type="text" id="Libelle" name="Libelle" value="@Model.Libelle" required />
+    </div>
+    <div>
+        <label for="QuantiteStock">Quantité en Stock</label>
+        <input type="number" id="QuantiteStock" name="QuantiteStock" value="@Model.QuantiteStock" required />
+    </div>
+    <div>
+        <label for="PrixUnitaire">Prix</label>
+        <input type="number" id="Prix" name="PrixUnitaire" value="@Model.Prix" step="0.01" required />
+    </div>
+    <div>
+        <label for="ImageUrl"></label>
+        <input type="url" id="ImageUrl" name="ImageUrl" value="@Model.ImageUrl" />
+    </div>
+    <button type="submit">Enregistrer</button>
+</form>
